@@ -22,14 +22,14 @@ function Wordmark({ className }: { className?: string }) {
       className={cn("flex items-center gap-2 font-heading", className)}
       aria-label={`${siteConfig.fullName} — início`}
     >
-      <span className="flex size-9 items-center justify-center rounded-md bg-primary font-semibold text-primary-foreground">
+      <span className="flex size-10 items-center justify-center rounded-full bg-primary text-base font-normal text-primary-foreground ring-1 ring-accent/50 ring-offset-2 ring-offset-background">
         IP
       </span>
       <span className="flex flex-col leading-none">
-        <span className="text-lg font-semibold tracking-tight">
+        <span className="text-lg font-medium tracking-tight">
           {siteConfig.name}
         </span>
-        <span className="text-[0.65rem] font-medium uppercase tracking-wider text-muted-foreground">
+        <span className="mt-0.5 text-[0.6rem] font-medium uppercase tracking-[0.18em] text-muted-foreground">
           Filadélfia · Franca
         </span>
       </span>
@@ -63,11 +63,15 @@ export function SiteHeader() {
         {/* Navegação desktop */}
         <nav className="hidden items-center gap-1 md:flex">
           {navItems.map((item) => (
-            <Button key={item.href} asChild variant="ghost" size="sm">
-              <Link href={item.href}>{item.label}</Link>
-            </Button>
+            <Link
+              key={item.href}
+              href={item.href}
+              className="nav-underline px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
+            >
+              {item.label}
+            </Link>
           ))}
-          <Button asChild size="sm" className="ml-2">
+          <Button asChild size="sm" className="ml-3">
             <a
               href={siteConfig.social.youtube}
               target="_blank"

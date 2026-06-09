@@ -16,6 +16,10 @@ export const siteConfig = {
   description:
     "A Igreja Presbiteriana Filadélfia de Franca é uma comunidade cristã reformada. Conheça nossos cultos, agenda e mensagens.",
   tagline: "Uma igreja para a glória de Deus e o cuidado das pessoas",
+  verse: {
+    text: "Edificarei a minha igreja, e as portas do inferno não prevalecerão contra ela.",
+    reference: "Mateus 16.18",
+  },
 
   // Vídeo de boas-vindas exibido na home (id do YouTube)
   welcomeVideoId: "wLgraLwE0KE",

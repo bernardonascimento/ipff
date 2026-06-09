@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Sparkles, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 
@@ -11,26 +11,49 @@ export const metadata: Metadata = {
 
 export default function CinquentaAnosPage() {
   return (
-    <section className="relative flex min-h-[70vh] items-center justify-center overflow-hidden bg-primary px-4 py-24 text-center text-primary-foreground">
+    <section className="relative isolate grid min-h-[80vh] place-items-center overflow-hidden bg-primary px-4 py-28 text-center text-primary-foreground">
+      {/* malha de gradiente */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_oklch(0.55_0.1_150_/_0.45),_transparent_60%)]"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_70%_at_50%_-10%,_oklch(0.58_0.11_150_/_0.5),_transparent_60%),radial-gradient(ellipse_70%_60%_at_50%_120%,_oklch(0.28_0.06_162_/_0.85),_transparent_55%)]"
       />
-      <div className="relative flex max-w-2xl flex-col items-center gap-6">
-        <span className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-1.5 text-sm font-medium ring-1 ring-inset ring-primary-foreground/20">
-          <Sparkles className="size-4" />
+      {/* padrão de pontos */}
+      <div
+        aria-hidden
+        className="dotted-bg absolute inset-0 -z-10 text-primary-foreground/[0.05]"
+      />
+      {/* marca d'água "50" gigante, grid-breaking */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2 select-none font-heading text-[18rem] font-light leading-none text-primary-foreground/[0.06] sm:text-[26rem] md:text-[34rem]"
+      >
+        50
+      </span>
+
+      <div className="relative flex w-full max-w-2xl flex-col items-center gap-7 justify-self-center">
+        <span className="animate-rise text-xs font-medium uppercase tracking-[0.28em] text-primary-foreground/70">
           Em breve
         </span>
-        <h1 className="font-heading text-5xl font-semibold tracking-tight sm:text-6xl">
+        <h1 className="animate-rise font-heading text-6xl font-light leading-[1.02] tracking-tight [animation-delay:120ms] sm:text-7xl md:text-8xl">
           50 Anos
         </h1>
-        <p className="text-lg text-primary-foreground/80">
-          Estamos preparando uma página especial para celebrar os 50 anos da{" "}
-          {siteConfig.fullName}. Volte em breve para conferir.
+        <div
+          aria-hidden
+          className="hairline-gold animate-rise w-24 [animation-delay:200ms]"
+        />
+        <p className="animate-rise w-full max-w-xl text-lg leading-relaxed text-primary-foreground/80 [animation-delay:280ms]">
+          Estamos preparando uma página especial para celebrar meio século de
+          fidelidade de Deus à {siteConfig.fullName}. Volte em breve para
+          conferir esta história.
         </p>
-        <Button asChild variant="secondary" size="lg" className="mt-2">
+        <Button
+          asChild
+          variant="secondary"
+          size="lg"
+          className="animate-rise group mt-2 [animation-delay:360ms]"
+        >
           <Link href="/">
-            <ArrowLeft className="size-4" />
+            <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-0.5" />
             Voltar ao início
           </Link>
         </Button>
