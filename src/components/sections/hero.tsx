@@ -28,21 +28,42 @@ function Seal({ className }: { className?: string }) {
 
 export function Hero() {
   return (
-    <section className="relative isolate overflow-hidden bg-primary text-primary-foreground">
-      {/* malha de gradiente em verde */}
+    <section className="relative isolate flex min-h-[88vh] flex-col overflow-hidden bg-primary text-primary-foreground">
+      {/* vídeo de fundo em loop, mudo e autoplay — self-hosted, com poster
+          (primeiro frame) renderizado no HTML para não haver flash até o vídeo tocar */}
+      <video
+        aria-hidden
+        tabIndex={-1}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        poster="/hero-poster.jpg"
+        className="pointer-events-none absolute inset-0 -z-30 h-full w-full object-cover"
+      >
+        <source src="/hero-bg.mp4" type="video/mp4" />
+      </video>
+
+      {/* degradê horizontal: preto forte à esquerda → leve à direita (legibilidade do texto) */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_70%_60%_at_80%_-10%,_oklch(0.58_0.11_150_/_0.55),_transparent_60%),radial-gradient(ellipse_60%_50%_at_0%_110%,_oklch(0.28_0.06_162_/_0.85),_transparent_55%)]"
+        className="absolute inset-0 -z-20 bg-[linear-gradient(to_right,oklch(0_0_0_/_0.92)_0%,oklch(0_0_0_/_0.72)_38%,oklch(0_0_0_/_0.35)_72%,oklch(0_0_0_/_0.15)_100%)]"
+      />
+      {/* vinheta superior/inferior para profundidade e a faixa do versículo */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-20 bg-[linear-gradient(to_bottom,oklch(0_0_0_/_0.5)_0%,transparent_28%,transparent_58%,oklch(0_0_0_/_0.8)_100%)]"
       />
       {/* padrão de pontos sutil */}
       <div
         aria-hidden
-        className="dotted-bg absolute inset-0 -z-10 text-primary-foreground/[0.05]"
+        className="dotted-bg absolute inset-0 -z-10 text-primary-foreground/[0.06]"
       />
       {/* selo decorativo, grid-breaking */}
-      <Seal className="pointer-events-none absolute -right-16 top-1/2 -z-10 hidden w-[34rem] -translate-y-1/2 text-primary-foreground/[0.07] md:block" />
+      <Seal className="pointer-events-none absolute -right-16 top-1/2 -z-10 hidden w-[34rem] -translate-y-1/2 text-primary-foreground/[0.08] md:block" />
 
-      <div className="mx-auto max-w-6xl px-4 pb-24 pt-28 sm:px-6 md:pb-32 md:pt-36">
+      <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-4 pb-24 pt-28 sm:px-6 md:pb-32 md:pt-36">
         <div className="max-w-3xl">
           <p className="animate-rise text-xs font-medium uppercase tracking-[0.28em] text-primary-foreground/70 [animation-delay:0ms]">
             Igreja Presbiteriana do Brasil · Franca/SP
