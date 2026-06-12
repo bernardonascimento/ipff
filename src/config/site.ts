@@ -34,7 +34,7 @@ export const siteConfig = {
 
   contact: {
     phone: "(16) 3722-5698",
-    whatsapp: "551637225698", // formato internacional, só dígitos
+    whatsapp: "5516993872462", // formato internacional, só dígitos
     whatsappMessage: "Olá! Gostaria de saber mais sobre a IPFF.",
     email: "contato@ipff.com.br",
     address: {
