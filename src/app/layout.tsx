@@ -1,24 +1,24 @@
 import type { Metadata } from "next";
-import { Spline_Sans, Fraunces } from "next/font/google";
+import { Source_Sans_3, Merriweather } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { WhatsAppFab } from "@/components/layout/whatsapp-fab";
 
-// Corpo/UI: humanista, distinta e bem legível (no lugar de Inter)
-const splineSans = Spline_Sans({
+// Corpo/UI: Source Sans 3
+const sourceSans = Source_Sans_3({
   variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
 });
 
-// Display: serif characterful para títulos editoriais
-const fraunces = Fraunces({
+// Títulos: Merriweather (serif)
+const merriweather = Merriweather({
   variable: "--font-heading",
   subsets: ["latin"],
   display: "swap",
-  axes: ["opsz", "SOFT", "WONK"],
+  weight: ["300", "400", "700", "900"],
 });
 
 export const metadata: Metadata = {
@@ -36,7 +36,6 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     type: "website",
   },
-  icons: { icon: "/favicon.ico" },
 };
 
 export default function RootLayout({
@@ -47,7 +46,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${splineSans.variable} ${fraunces.variable} h-full antialiased`}
+      className={`${sourceSans.variable} ${merriweather.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <SiteHeader />

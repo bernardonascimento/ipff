@@ -15,10 +15,11 @@ export const siteConfig = {
   url: "https://ipff.org.br",
   description:
     "A Igreja Presbiteriana Filadélfia de Franca é uma comunidade cristã reformada. Conheça nossos cultos, agenda e mensagens.",
-  tagline: "Uma igreja para a glória de Deus e o cuidado das pessoas",
+  tagline:
+    "Uma família de amor que discipula e testemunha o Evangelho de Jesus Cristo para a glória de Deus",
   verse: {
-    text: "Edificarei a minha igreja, e as portas do inferno não prevalecerão contra ela.",
-    reference: "Mateus 16.18",
+    text: "Nisto todos conhecerão que vocês são meus discípulos: se tiverem amor uns aos outros.",
+    reference: "João 13.35",
   },
 
   // Vídeo de boas-vindas exibido na home (id do YouTube)
@@ -32,27 +33,26 @@ export const siteConfig = {
   },
 
   contact: {
-    // TODO: confirmar dados reais
-    phone: "(16) 0000-0000",
-    whatsapp: "5516000000000", // formato internacional, só dígitos
+    phone: "(16) 3722-5698",
+    whatsapp: "551637225698", // formato internacional, só dígitos
     whatsappMessage: "Olá! Gostaria de saber mais sobre a IPFF.",
-    email: "contato@ipff.org.br",
+    email: "contato@ipff.com.br",
     address: {
-      street: "Rua Exemplo, 123 — Centro",
+      street: "Rua Minas Gerais, 519 — Vila Aparecida",
       city: "Franca",
       state: "SP",
-      zip: "14400-000",
+      zip: "14401-229",
     },
-    // URL de embed do Google Maps (substituir pelo local real)
     mapsEmbedUrl:
-      "https://www.google.com/maps?q=Franca,SP&output=embed",
-    mapsLink: "https://www.google.com/maps?q=Franca,SP",
+      "https://www.google.com/maps?q=Rua+Minas+Gerais,+519,+Vila+Aparecida,+Franca,+SP,+14401-229&output=embed",
+    mapsLink:
+      "https://www.google.com/maps?q=Rua+Minas+Gerais,+519,+Vila+Aparecida,+Franca,+SP,+14401-229",
   },
 
   social: {
     youtube: "https://www.youtube.com/@filadelfiafranca",
-    instagram: "https://www.instagram.com/",
-    facebook: "https://www.facebook.com/",
+    instagram: "https://www.instagram.com/filadelfiafranca",
+    facebook: "https://www.facebook.com/filadelfiafranca",
   },
 
   // ID do calendário público do Google (substituir pelo da igreja).
@@ -91,13 +91,8 @@ export const siteConfig = {
   // Liderança / pastores (placeholders — fotos vão em /public/lideranca)
   leadership: [
     {
-      name: "Rev. Nome do Pastor",
-      role: "Pastor Titular",
-      image: "/lideranca/placeholder.svg",
-    },
-    {
-      name: "Rev. Nome do Pastor",
-      role: "Pastor Auxiliar",
+      name: "Presb. Nome",
+      role: "Presbítero",
       image: "/lideranca/placeholder.svg",
     },
     {
@@ -106,8 +101,13 @@ export const siteConfig = {
       image: "/lideranca/placeholder.svg",
     },
     {
-      name: "Diác. Nome",
-      role: "Diácono",
+      name: "Presb. Nome",
+      role: "Presbítero",
+      image: "/lideranca/placeholder.svg",
+    },
+    {
+      name: "Presb. Nome",
+      role: "Presbítero",
       image: "/lideranca/placeholder.svg",
     },
   ],

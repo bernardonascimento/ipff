@@ -15,7 +15,7 @@ export default function CinquentaAnosPage() {
       {/* malha de gradiente */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_70%_at_50%_-10%,_oklch(0.58_0.11_150_/_0.5),_transparent_60%),radial-gradient(ellipse_70%_60%_at_50%_120%,_oklch(0.28_0.06_162_/_0.85),_transparent_55%)]"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_70%_at_50%_-10%,_#5b826080,_transparent_60%),radial-gradient(ellipse_70%_60%_at_50%_120%,_#205d0ad9,_transparent_55%)]"
       />
       {/* padrão de pontos */}
       <div

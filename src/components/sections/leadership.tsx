@@ -1,5 +1,4 @@
 import { User } from "lucide-react";
-import { SectionLabel } from "@/components/sections/section-label";
 import { siteConfig } from "@/config/site";
 
 export function Leadership() {
@@ -7,12 +6,12 @@ export function Leadership() {
     <section id="lideranca" className="bg-background py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="max-w-2xl">
-          <SectionLabel index="05">Liderança</SectionLabel>
-          <h2 className="mt-5 font-heading text-4xl font-light leading-[1.05] tracking-tight sm:text-5xl">
-            Nossos pastores e oficiais
+          <h2 className="font-heading text-4xl font-light leading-[1.05] tracking-tight sm:text-5xl">
+            Nossos pastores
           </h2>
-          <p className="mt-5 leading-relaxed text-muted-foreground">
-            Conheça quem serve à frente da nossa comunidade.
+          <p className="mt-5 text-lg leading-relaxed text-muted-foreground sm:text-xl">
+            Conheça quem serve à frente da Igreja Presbiteriana Filadélfia de
+            Franca.
           </p>
         </div>
 

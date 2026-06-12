@@ -49,41 +49,42 @@
 }
 
 :root {
-  /* Paleta IPFF — verde presbiteriano (IPB) sobre fundo creme, com dourado de apoio */
-  --background: oklch(0.99 0.006 95);
-  --foreground: oklch(0.23 0.02 155);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.23 0.02 155);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.23 0.02 155);
-  /* Verde IPB profundo */
-  --primary: oklch(0.39 0.085 156);
-  --primary-foreground: oklch(0.98 0.012 95);
-  --secondary: oklch(0.95 0.022 150);
-  --secondary-foreground: oklch(0.32 0.06 156);
-  --muted: oklch(0.96 0.012 130);
-  --muted-foreground: oklch(0.47 0.025 150);
-  /* Dourado de apoio */
-  --accent: oklch(0.84 0.1 88);
-  --accent-foreground: oklch(0.3 0.05 90);
+  /* Paleta IPFF — verdes:
+     #0e3400 principal · #205d0a secundária · #5b8260 auxiliar 1 · #8ba276 auxiliar 2 */
+  --background: #f6f8f3;
+  --foreground: #0e3400;
+  --card: #ffffff;
+  --card-foreground: #0e3400;
+  --popover: #ffffff;
+  --popover-foreground: #0e3400;
+  /* Verde principal profundo */
+  --primary: #0e3400;
+  --primary-foreground: #f4f8f1;
+  --secondary: #e3ebdb;
+  --secondary-foreground: #0e3400;
+  --muted: #edf1e8;
+  --muted-foreground: #5b8260;
+  /* Auxiliar 2 — apoio (substitui o antigo dourado) */
+  --accent: #8ba276;
+  --accent-foreground: #0e3400;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.9 0.012 145);
-  --input: oklch(0.9 0.012 145);
-  --ring: oklch(0.39 0.085 156);
-  --chart-1: oklch(0.39 0.085 156);
-  --chart-2: oklch(0.55 0.09 150);
-  --chart-3: oklch(0.84 0.1 88);
-  --chart-4: oklch(0.65 0.06 120);
-  --chart-5: oklch(0.3 0.05 160);
+  --border: #d7e0cd;
+  --input: #d7e0cd;
+  --ring: #205d0a;
+  --chart-1: #0e3400;
+  --chart-2: #205d0a;
+  --chart-3: #5b8260;
+  --chart-4: #8ba276;
+  --chart-5: #205d0a;
   --radius: 0.625rem;
-  --sidebar: oklch(0.98 0.01 120);
-  --sidebar-foreground: oklch(0.23 0.02 155);
-  --sidebar-primary: oklch(0.39 0.085 156);
-  --sidebar-primary-foreground: oklch(0.98 0.012 95);
-  --sidebar-accent: oklch(0.95 0.022 150);
-  --sidebar-accent-foreground: oklch(0.32 0.06 156);
-  --sidebar-border: oklch(0.9 0.012 145);
-  --sidebar-ring: oklch(0.39 0.085 156);
+  --sidebar: #f6f8f3;
+  --sidebar-foreground: #0e3400;
+  --sidebar-primary: #0e3400;
+  --sidebar-primary-foreground: #f4f8f1;
+  --sidebar-accent: #e3ebdb;
+  --sidebar-accent-foreground: #0e3400;
+  --sidebar-border: #d7e0cd;
+  --sidebar-ring: #205d0a;
 }
 
 .dark {
@@ -137,7 +138,6 @@
   }
   h1, h2, h3, h4 {
     font-family: var(--font-heading);
-    font-variation-settings: "SOFT" 30, "WONK" 1;
     letter-spacing: -0.015em;
   }
 }
@@ -155,7 +155,7 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Filete dourado fino */
+/* Filete de apoio fino (cor auxiliar) */
 .hairline-gold {
   height: 1px;
   background: linear-gradient(

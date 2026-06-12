@@ -63,41 +63,42 @@ export function Hero() {
       {/* selo decorativo, grid-breaking */}
       <Seal className="pointer-events-none absolute -right-16 top-1/2 -z-10 hidden w-[34rem] -translate-y-1/2 text-primary-foreground/[0.08] md:block" />
 
-      <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-4 pb-24 pt-28 sm:px-6 md:pb-32 md:pt-36">
-        <div className="max-w-3xl">
-          <p className="animate-rise text-xs font-medium uppercase tracking-[0.28em] text-primary-foreground/70 [animation-delay:0ms]">
-            Igreja Presbiteriana do Brasil · Franca/SP
-          </p>
-
-          <h1 className="animate-rise mt-6 font-heading text-5xl font-light leading-[1.02] tracking-tight [animation-delay:120ms] sm:text-6xl md:text-7xl">
-            {siteConfig.tagline}
+      <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-4 pb-20 pt-28 sm:px-6 sm:pb-24 sm:pt-32 md:pb-32 md:pt-36">
+        <div className="max-w-4xl">
+          <h1 className="animate-rise font-heading text-3xl font-light leading-[1.28] tracking-tight [animation-delay:120ms] sm:text-4xl md:text-5xl">
+            Uma família de amor que discipula e testemunha o evangelho de Jesus
+            Cristo para a glória de Deus
           </h1>
 
-          <p className="animate-rise mt-7 max-w-xl text-base leading-relaxed text-primary-foreground/80 [animation-delay:240ms] sm:text-lg">
-            Seja bem-vindo à {siteConfig.fullName}. Venha adorar a Deus conosco e
-            fazer parte da nossa comunidade.
+          <p className="animate-rise mt-6 max-w-2xl text-base leading-relaxed text-primary-foreground/80 [animation-delay:240ms] sm:mt-7 sm:text-lg">
+            Seja bem-vindo à Igreja Presbiteriana Filadélfia de Franca. Nosso
+            desejo é que você encontre aqui um lugar para adorar a Deus, crescer
+            na fé e caminhar em comunhão com outros irmãos em Cristo.
           </p>
 
           <div className="animate-rise mt-9 flex flex-col gap-3 [animation-delay:360ms] sm:flex-row">
-            <Button asChild size="lg" variant="secondary" className="group">
+            <Button
+              asChild
+              variant="secondary"
+              className="group h-11 px-5 text-base"
+            >
               <a
                 href={siteConfig.social.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Play className="size-4 transition-transform group-hover:scale-110" />
+                <Play className="size-[1.1rem] transition-transform group-hover:scale-110" />
                 Assista ao vivo
               </a>
             </Button>
             <Button
               asChild
-              size="lg"
               variant="outline"
-              className="border-primary-foreground/25 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+              className="h-11 border-primary-foreground/25 bg-transparent px-5 text-base text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
             >
-              <Link href="#boas-vindas">
+              <Link href="#quem-somos">
                 Conheça a igreja
-                <ArrowDown className="size-4" />
+                <ArrowDown className="size-[1.1rem]" />
               </Link>
             </Button>
           </div>

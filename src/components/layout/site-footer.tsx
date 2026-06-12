@@ -18,7 +18,9 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-3">
         <div>
           <p className="font-heading text-lg font-semibold">
-            {siteConfig.fullName}
+            Igreja Presbiteriana
+            <br />
+            Filadélfia de Franca
           </p>
           <p className="mt-2 max-w-xs text-sm text-muted-foreground">
             {siteConfig.tagline}

@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu } from "lucide-react";
+import Image from "next/image";
+import { Menu, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,15 +23,20 @@ function Wordmark({ className }: { className?: string }) {
       className={cn("flex items-center gap-2 font-heading", className)}
       aria-label={`${siteConfig.fullName} — início`}
     >
-      <span className="flex size-10 items-center justify-center rounded-full bg-primary text-base font-normal text-primary-foreground ring-1 ring-accent/50 ring-offset-2 ring-offset-background">
-        IP
-      </span>
+      <Image
+        src="/logo.png"
+        alt=""
+        width={64}
+        height={64}
+        priority
+        className="size-11 shrink-0 object-contain sm:size-14"
+      />
       <span className="flex flex-col leading-none">
-        <span className="text-lg font-medium tracking-tight">
-          {siteConfig.name}
+        <span className="text-base font-medium tracking-tight sm:text-xl">
+          Filadélfia de Franca
         </span>
-        <span className="mt-0.5 text-[0.6rem] font-medium uppercase tracking-[0.18em] text-muted-foreground">
-          Filadélfia · Franca
+        <span className="mt-1 text-[0.6rem] font-medium uppercase tracking-[0.18em] text-primary-foreground/60 sm:text-[0.7rem]">
+          Igreja Presbiteriana
         </span>
       </span>
     </Link>
@@ -51,13 +57,13 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full border-b transition-colors",
+        "sticky top-0 z-50 w-full border-b bg-primary text-primary-foreground transition-shadow",
         scrolled
-          ? "border-border bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/75"
-          : "border-transparent bg-background/0",
+          ? "border-primary-foreground/10 shadow-lg shadow-primary/30"
+          : "border-primary-foreground/5",
       )}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+      <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-4 sm:px-6">
         <Wordmark />
 
         {/* Navegação desktop */}
@@ -66,17 +72,22 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
-              className="nav-underline px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
+              className="nav-underline px-3 py-2 text-base font-medium text-primary-foreground/80 transition-colors hover:text-primary-foreground"
             >
               {item.label}
             </Link>
           ))}
-          <Button asChild size="sm" className="ml-3">
+          <Button
+            asChild
+            variant="secondary"
+            className="group ml-3 h-11 px-5 text-base"
+          >
             <a
               href={siteConfig.social.youtube}
               target="_blank"
               rel="noopener noreferrer"
             >
+              <Play className="size-[1.1rem] transition-transform group-hover:scale-110" />
               Assista ao vivo
             </a>
           </Button>
@@ -88,7 +99,7 @@ export function SiteHeader() {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden"
+              className="text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground md:hidden"
               aria-label="Abrir menu"
             >
               <Menu className="size-5" />

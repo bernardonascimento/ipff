@@ -1,6 +1,5 @@
 import { MapPin, Navigation } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { SectionLabel } from "@/components/sections/section-label";
 import { siteConfig } from "@/config/site";
 
 export function Location() {
@@ -10,11 +9,10 @@ export function Location() {
     <section id="localizacao" className="bg-secondary/40 py-20 md:py-28">
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 md:grid-cols-12">
         <div className="md:col-span-5">
-          <SectionLabel index="06">Onde estamos</SectionLabel>
-          <h2 className="mt-5 font-heading text-4xl font-light leading-[1.05] tracking-tight sm:text-5xl">
+          <h2 className="font-heading text-4xl font-light leading-[1.05] tracking-tight sm:text-5xl">
             Venha nos visitar
           </h2>
-          <p className="mt-6 flex items-start gap-3 leading-relaxed text-muted-foreground">
+          <p className="mt-6 flex items-start gap-3 text-lg leading-relaxed text-muted-foreground sm:text-xl">
             <MapPin className="mt-1 size-5 shrink-0 text-accent" />
             <span>
               {address.street}
@@ -22,9 +20,9 @@ export function Location() {
               {address.city} — {address.state}, {address.zip}
             </span>
           </p>
-          <Button asChild className="mt-7 group">
+          <Button asChild className="group mt-7 h-11 px-5 text-base">
             <a href={mapsLink} target="_blank" rel="noopener noreferrer">
-              <Navigation className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              <Navigation className="size-[1.1rem] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               Como chegar
             </a>
           </Button>

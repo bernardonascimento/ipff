@@ -1,4 +1,3 @@
-import { SectionLabel } from "@/components/sections/section-label";
 import { siteConfig } from "@/config/site";
 
 export function ServiceTimes() {
@@ -7,8 +6,7 @@ export function ServiceTimes() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid gap-10 md:grid-cols-12 md:items-end">
           <div className="md:col-span-5">
-            <SectionLabel index="02">Programação</SectionLabel>
-            <h2 className="mt-5 font-heading text-4xl font-light leading-[1.05] tracking-tight sm:text-5xl">
+            <h2 className="font-heading text-4xl font-light leading-[1.05] tracking-tight sm:text-5xl">
               Participe dos nossos cultos
             </h2>
           </div>
