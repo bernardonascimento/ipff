@@ -1,30 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Play, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
-
-/** Selo/monograma decorativo — círculo com cruz, evocando um selo eclesiástico. */
-function Seal({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 200 200" className={className} fill="none" aria-hidden>
-      <circle cx="100" cy="100" r="96" stroke="currentColor" strokeWidth="1" />
-      <circle
-        cx="100"
-        cy="100"
-        r="78"
-        stroke="currentColor"
-        strokeWidth="0.75"
-        strokeDasharray="2 4"
-      />
-      <path
-        d="M100 44v112M100 92c0-14 0-22 16-22M100 92c0-14 0-22-16-22"
-        stroke="currentColor"
-        strokeWidth="1.25"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
 
 export function Hero() {
   return (
@@ -45,23 +23,30 @@ export function Hero() {
         <source src="/hero-bg.mp4" type="video/mp4" />
       </video>
 
-      {/* degradê horizontal: preto forte à esquerda → leve à direita (legibilidade do texto) */}
+      {/* degradê horizontal: preto à esquerda → leve à direita (legibilidade do texto) */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-20 bg-[linear-gradient(to_right,oklch(0_0_0_/_0.92)_0%,oklch(0_0_0_/_0.72)_38%,oklch(0_0_0_/_0.35)_72%,oklch(0_0_0_/_0.15)_100%)]"
+        className="absolute inset-0 -z-20 bg-[linear-gradient(to_right,oklch(0_0_0_/_0.8)_0%,oklch(0_0_0_/_0.58)_38%,oklch(0_0_0_/_0.24)_72%,oklch(0_0_0_/_0.08)_100%)]"
       />
       {/* vinheta superior/inferior para profundidade e a faixa do versículo */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-20 bg-[linear-gradient(to_bottom,oklch(0_0_0_/_0.5)_0%,transparent_28%,transparent_58%,oklch(0_0_0_/_0.8)_100%)]"
+        className="absolute inset-0 -z-20 bg-[linear-gradient(to_bottom,oklch(0_0_0_/_0.4)_0%,transparent_28%,transparent_58%,oklch(0_0_0_/_0.65)_100%)]"
       />
       {/* padrão de pontos sutil */}
       <div
         aria-hidden
         className="dotted-bg absolute inset-0 -z-10 text-primary-foreground/[0.06]"
       />
-      {/* selo decorativo, grid-breaking */}
-      <Seal className="pointer-events-none absolute -right-16 top-1/2 -z-10 hidden w-[34rem] -translate-y-1/2 text-primary-foreground/[0.08] md:block" />
+      {/* marca d'água — logo, grid-breaking */}
+      <Image
+        src="/logo.png"
+        alt=""
+        aria-hidden
+        width={420}
+        height={420}
+        className="pointer-events-none absolute -right-10 top-1/2 -z-10 hidden w-[26rem] -translate-y-1/2 opacity-[0.08] md:block"
+      />
 
       <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-4 pb-20 pt-28 sm:px-6 sm:pb-24 sm:pt-32 md:pb-32 md:pt-36">
         <div className="max-w-4xl">

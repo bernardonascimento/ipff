@@ -63,28 +63,32 @@ export const siteConfig = {
   // Programação semanal / horários de culto (placeholders)
   services: [
     {
-      title: "Culto de Adoração",
-      day: "Domingo",
-      time: "19h00",
-      description: "Nosso principal culto de adoração e pregação da Palavra.",
+      title: "Reuniões de Oração",
+      day: "Terça-feira",
+      time: "19h30",
+      description:
+        "Momentos de oração e intercessão pela igreja, famílias e pela obra do Senhor.",
     },
     {
       title: "Escola Bíblica Dominical",
       day: "Domingo",
-      time: "09h00",
-      description: "Estudo bíblico para todas as idades.",
+      time: "09h30",
+      description:
+        "Estudo da Palavra de Deus que edifica, ensina e transforma vidas.",
     },
     {
-      title: "Culto da Manhã",
+      title: "Culto de Adoração Vespertino",
       day: "Domingo",
-      time: "10h30",
-      description: "Culto matutino de adoração.",
+      time: "19h00",
+      description:
+        "Um tempo de adoração, comunhão e edificação através da Palavra e do louvor.",
     },
     {
-      title: "Reunião de Oração",
+      title: "Culto Maranata",
       day: "Quarta-feira",
-      time: "20h00",
-      description: "Momento de oração e estudo no meio da semana.",
+      time: "14h00",
+      description:
+        "Reunião das mulheres, tempo de oração e intercessão pela igreja, famílias e pela obra do Senhor.",
     },
   ],
 
