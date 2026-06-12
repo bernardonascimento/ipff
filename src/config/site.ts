@@ -11,10 +11,9 @@ export const siteConfig = {
   name: "IPFF",
   fullName: "Igreja Presbiteriana Filadélfia de Franca",
   shortName: "Igreja Presbiteriana Filadélfia",
-  // TODO: ajustar quando o domínio estiver definido
-  url: "https://ipff.org.br",
+  url: "https://ipff.com.br",
   description:
-    "A Igreja Presbiteriana Filadélfia de Franca é uma comunidade cristã reformada. Conheça nossos cultos, agenda e mensagens.",
+    "A Igreja Presbiteriana Filadélfia de Franca (IPB) é uma igreja cristã reformada em Franca/SP. Participe dos nossos cultos, escola bíblica dominical e reuniões de oração. Uma família de amor que discipula e testemunha o Evangelho de Jesus Cristo.",
   tagline:
     "Uma família de amor que discipula e testemunha o Evangelho de Jesus Cristo para a glória de Deus",
   verse: {
