@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { siteConfig } from "@/config/site";
 
 /** Os cinco pilares (solas) da Reforma Protestante. */
 const solas = [
@@ -48,28 +50,52 @@ export function About() {
           className="dotted-bg absolute inset-0 -z-10 text-foreground/[0.04]"
         />
 
-        <div className="mx-auto max-w-6xl px-4 py-24 sm:px-6 md:py-32">
-          <h2 className="font-heading text-4xl font-light leading-[1.1] tracking-tight text-foreground sm:text-5xl">
-            Quem somos
-          </h2>
+        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-24 sm:px-6 md:grid-cols-12 md:gap-12 md:py-32">
+          <div className="md:col-span-6">
+            <h2 className="font-heading text-4xl font-light leading-[1.1] tracking-tight text-foreground sm:text-5xl">
+              Quem somos
+            </h2>
 
-          <div className="mt-7 max-w-3xl space-y-5 text-lg leading-relaxed text-primary sm:text-xl">
-            <p>
-              A Igreja Presbiteriana Filadélfia de Franca faz parte da Igreja
-              Presbiteriana do Brasil (IPB), uma denominação cristã histórica,
-              reformada e confessional, comprometida com a fiel pregação das
-              Escrituras e com a proclamação do Evangelho de Jesus Cristo.
-            </p>
-            <p>
-              Temos como propósito ser{" "}
-              <strong className="font-semibold">
-                “uma família de amor que discipula e testemunha o Evangelho de
-                Jesus Cristo para a glória de Deus”
-              </strong>
-              . Por isso, buscamos adorar a Deus, crescer na fé, servir ao
-              próximo e anunciar as boas-novas da salvação em Cristo a todas as
-              pessoas.
-            </p>
+            <div className="mt-7 space-y-5 text-lg leading-relaxed text-primary sm:text-xl">
+              <p>
+                A Igreja Presbiteriana Filadélfia de Franca faz parte da Igreja
+                Presbiteriana do Brasil (IPB), uma denominação cristã histórica,
+                reformada e confessional, comprometida com a fiel pregação das
+                Escrituras e com a proclamação do Evangelho de Jesus Cristo.
+              </p>
+              <p>
+                Temos como propósito ser{" "}
+                <strong className="font-semibold">
+                  “uma família de amor que discipula e testemunha o Evangelho de
+                  Jesus Cristo para a glória de Deus”
+                </strong>
+                . Por isso, buscamos adorar a Deus, crescer na fé, servir ao
+                próximo e anunciar as boas-novas da salvação em Cristo a todas
+                as pessoas.
+              </p>
+            </div>
+          </div>
+
+          {/* Vídeo de apresentação com moldura */}
+          <div className="md:col-span-6">
+            <div className="relative">
+              <div
+                aria-hidden
+                className="absolute -bottom-3 -right-3 h-full w-full rounded-xl border border-accent/50"
+              />
+              <div className="relative overflow-hidden rounded-xl border bg-card shadow-xl ring-1 ring-black/5">
+                <AspectRatio ratio={16 / 9}>
+                  <iframe
+                    className="size-full"
+                    src={`https://www.youtube-nocookie.com/embed/${siteConfig.welcomeVideoId}`}
+                    title="Vídeo de apresentação da Igreja Presbiteriana Filadélfia de Franca"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    loading="lazy"
+                  />
+                </AspectRatio>
+              </div>
+            </div>
           </div>
         </div>
       </div>
