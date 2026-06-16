@@ -1,32 +1,32 @@
 [
   {
     "name": "Weber Sérgio",
-    "role": "Pastor Titular",
+    "role": "Pastor Efetivo",
     "photo": "/conselho/weber.jpg"
   },
   {
     "name": "Rodrigo Faleiros",
-    "role": "Presbítero",
+    "role": "Presbítero Regente",
     "photo": "/conselho/rodrigo.jpg"
   },
   {
     "name": "Filipe Pimenta",
-    "role": "Presbítero",
+    "role": "Presbítero Regente",
     "photo": "/conselho/filipe.jpg"
   },
   {
     "name": "Mário Chagas",
-    "role": "Presbítero",
+    "role": "Presbítero Regente",
     "photo": "/conselho/mario.jpg"
   },
   {
     "name": "Victor Chimenez",
-    "role": "Presbítero",
+    "role": "Presbítero Regente",
     "photo": "/conselho/victor.jpg"
   },
   {
     "name": "Haroldo Freddi",
-    "role": "Presbítero",
+    "role": "Presbítero Regente",
     "photo": "/conselho/haroldo.jpg"
   }
 ]
