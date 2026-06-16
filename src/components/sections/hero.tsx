@@ -7,6 +7,13 @@ import { siteConfig } from "@/config/site";
 export function Hero() {
   return (
     <section className="relative isolate flex min-h-[88vh] flex-col overflow-hidden bg-primary text-primary-foreground">
+      {/* Prioriza o poster do hero (LCP real, acima da dobra) — içado para o <head>. */}
+      <link
+        rel="preload"
+        as="image"
+        href="/hero-poster.jpg"
+        fetchPriority="high"
+      />
       {/* vídeo de fundo em loop, mudo e autoplay — self-hosted, com poster
           (primeiro frame) renderizado no HTML para não haver flash até o vídeo tocar */}
       <video
