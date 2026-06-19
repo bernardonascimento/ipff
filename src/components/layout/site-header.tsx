@@ -68,15 +68,27 @@ export function SiteHeader() {
 
         {/* Navegação desktop */}
         <nav className="hidden items-center gap-1 md:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="nav-underline px-3 py-2 text-base font-medium text-primary-foreground/80 transition-colors hover:text-primary-foreground"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) =>
+            "external" in item && item.external ? (
+              <a
+                key={item.href}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-underline px-3 py-2 text-base font-medium text-primary-foreground/80 transition-colors hover:text-primary-foreground"
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="nav-underline px-3 py-2 text-base font-medium text-primary-foreground/80 transition-colors hover:text-primary-foreground"
+              >
+                {item.label}
+              </Link>
+            ),
+          )}
           <Button
             asChild
             variant="secondary"
@@ -114,12 +126,23 @@ export function SiteHeader() {
             <nav className="flex flex-col gap-1 px-4">
               {navItems.map((item) => (
                 <SheetClose asChild key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="rounded-md px-3 py-2.5 text-base font-medium hover:bg-secondary"
-                  >
-                    {item.label}
-                  </Link>
+                  {"external" in item && item.external ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-md px-3 py-2.5 text-base font-medium hover:bg-secondary"
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className="rounded-md px-3 py-2.5 text-base font-medium hover:bg-secondary"
+                    >
+                      {item.label}
+                    </Link>
+                  )}
                 </SheetClose>
               ))}
               <Button asChild className="mt-3">

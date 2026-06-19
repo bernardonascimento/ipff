@@ -48,12 +48,23 @@ export function SiteFooter() {
           <ul className="mt-3 space-y-2 text-sm">
             {navItems.map((item) => (
               <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="text-foreground/80 transition-colors hover:text-primary"
-                >
-                  {item.label}
-                </Link>
+                {"external" in item && item.external ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-foreground/80 transition-colors hover:text-primary"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className="text-foreground/80 transition-colors hover:text-primary"
+                  >
+                    {item.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>

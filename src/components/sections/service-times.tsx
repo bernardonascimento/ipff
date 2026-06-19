@@ -1,10 +1,11 @@
 import Image from "next/image";
-import { Church, BookOpen, HandHeart, Sunrise } from "lucide-react";
+import { Church, BookOpen, Sunrise } from "lucide-react";
+import { PrayingHandsIcon } from "@/components/icons";
 import { siteConfig } from "@/config/site";
 
 /** Ícone de cada culto, por título. */
 const iconByTitle: Record<string, React.ElementType> = {
-  "Reuniões de Oração": HandHeart,
+  "Reuniões de Oração": PrayingHandsIcon,
   "Escola Bíblica Dominical": BookOpen,
   "Culto de Adoração Vespertino": Church,
   "Culto Maranata": Sunrise,
@@ -62,7 +63,7 @@ export function ServiceTimes() {
                 </div>
 
                 {/* Corpo: título + traço + descrição */}
-                <div className="flex flex-1 flex-col items-center px-6 py-7 text-center">
+                <div className="flex flex-1 flex-col items-center px-5 py-5 text-center">
                   <h3 className="flex min-h-[3.5rem] items-center font-heading text-xl font-medium leading-snug tracking-tight text-primary">
                     {service.title}
                   </h3>
