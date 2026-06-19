@@ -80,7 +80,7 @@ export const siteConfig = {
       day: "Domingo",
       time: "19h00",
       description:
-        "Um tempo de adoração, comunhão e edificação através da Palavra e do louvor.",
+        "Um tempo de adoração, comunhão e edificação através da exposição da Palavra de Deus e do louvor com cânticos.",
     },
     {
       title: "Culto Maranata",
@@ -125,10 +125,12 @@ export const siteConfig = {
 } as const;
 
 // Itens de navegação do site
+// `external: true` abre o link em nova aba via <a> (ex.: PDF). A página /agenda
+// continua existindo, mas foi removida da navegação por enquanto.
 export const navItems = [
   { label: "Início", href: "/" },
-  { label: "Agenda", href: "/agenda" },
   { label: "50 Anos", href: "/50-anos" },
+  { label: "LGPD", href: "/lgpd.pdf", external: true },
 ] as const;
 
 export type SiteConfig = typeof siteConfig;
