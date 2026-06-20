@@ -212,8 +212,26 @@
   animation: rise-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+/* Pulso de atenção (botão "Adquira" sobre o banner) — escala + halo verde */
+@keyframes attention-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--primary) 50%, transparent);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 0 12px color-mix(in srgb, var(--primary) 0%, transparent);
+  }
+}
+
+.animate-attention {
+  animation: attention-pulse 1.8s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .animate-rise {
+  .animate-rise,
+  .animate-attention {
     animation: none;
   }
   html {
