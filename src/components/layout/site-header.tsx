@@ -100,7 +100,7 @@ export function SiteHeader() {
               rel="noopener noreferrer"
             >
               <Play className="size-[1.1rem] transition-transform group-hover:scale-110" />
-              Assista ao vivo
+              Assista aos cultos
             </a>
           </Button>
         </nav>
@@ -151,7 +151,7 @@ export function SiteHeader() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Assista ao vivo
+                  Assista aos cultos
                 </a>
               </Button>
             </nav>
