@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Source_Sans_3, Merriweather } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -167,6 +168,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // ID de medição do Google Analytics 4 (configurado na Vercel / .env.local).
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
   return (
     <html
       lang="pt-BR"
@@ -184,6 +187,9 @@ export default function RootLayout({
         {/* Grão de filme sutil sobre toda a página */}
         <div aria-hidden className="grain-overlay" />
       </body>
+      {/* Google Analytics 4 (gtag.js) — carregado após a hidratação.
+          ID definido em NEXT_PUBLIC_GA_ID (Vercel/.env.local). */}
+      {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
     </html>
   );
 }
