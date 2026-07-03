@@ -129,7 +129,7 @@ export const siteConfig = {
 // continua existindo, mas foi removida da navegação por enquanto.
 export const navItems = [
   { label: "Início", href: "/" },
-  { label: "50 Anos", href: "/50-anos" },
+  { label: "50 Anos", href: "/50anos" },
   { label: "LGPD", href: "/lgpd.pdf", external: true },
 ] as const;
 
