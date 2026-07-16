@@ -27,7 +27,20 @@ export const metadata: Metadata = {
     title: `${siteConfig.purples.title} — ${siteConfig.fullName}`,
     description: siteConfig.purples.description,
     url: "/purples",
-    images: [{ url: siteConfig.purples.image }],
+    images: [
+      {
+        url: siteConfig.purples.image,
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.purples.title} — inscrição gratuita`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.purples.title} — ${siteConfig.fullName}`,
+    description: siteConfig.purples.description,
+    images: [siteConfig.purples.image],
   },
 };
 

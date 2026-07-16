@@ -124,8 +124,9 @@ export const siteConfig = {
       "Uma noite de louvor e adoração para celebrar os 50 anos da IPFF. Entrada gratuita — garanta o seu lugar.",
     description:
       "A banda Purples chega a Franca para uma noite de louvor e adoração em celebração ao cinquentenário da Igreja Presbiteriana Filadélfia. O evento é gratuito: faça sua inscrição e garanta o seu lugar.",
-    // Imagem usada em Open Graph / compartilhamento
-    image: "/purples.jpg",
+    // Imagem de compartilhamento (Open Graph / Twitter) — screenshot da
+    // própria página do evento (1200x630).
+    image: "/purples/og.jpg",
 
     // Detalhes do evento
     event: {
