@@ -115,6 +115,68 @@ export const siteConfig = {
     },
   ],
 
+  // Evento "Purples em Franca" — página /purples (inscrição gratuita).
+  // ⚠️ Os detalhes de data/hora/local abaixo são PLACEHOLDERS — confirme e
+  // ajuste com as informações oficiais do evento.
+  purples: {
+    title: "Purples em Franca",
+    subtitle:
+      "Uma noite de louvor e adoração para celebrar os 50 anos da IPFF. Entrada gratuita — garanta o seu lugar.",
+    description:
+      "A banda Purples chega a Franca para uma noite de louvor e adoração em celebração ao cinquentenário da Igreja Presbiteriana Filadélfia. O evento é gratuito: faça sua inscrição e garanta o seu lugar.",
+    // Imagem usada em Open Graph / compartilhamento
+    image: "/purples.jpg",
+
+    // Detalhes do evento
+    event: {
+      date: "08 de agosto",
+      time: "20h",
+      venue: "Ginásio do Instituto Samaritano de Ensino",
+      city: "Franca — SP",
+      free: true,
+    },
+
+    // Fotos "em pé" da banda para o carrossel do hero (public/purples/).
+    // A primeira é a exibida ao carregar a página.
+    gallery: [
+      "/purples/vocal_principal_2.jpg",
+      "/purples/banda.jpg",
+      "/purples/vocal_principal_1.jpg",
+      "/purples/guitarrista.jpg",
+      "/purples/vocal_secundaria_1.jpg",
+      "/purples/baterista.jpg",
+      "/purples/baixista.jpg",
+      "/purples/vocal_secundaria_2.jpg",
+    ],
+
+    // Dados da banda (release de imprensa 2020)
+    band: {
+      origin: "Limeira, interior de São Paulo",
+      genre: "pop-rock gospel",
+      blurb:
+        "Nascida na Igreja Presbiteriana, a Purples proclama o Evangelho em canções 100% autorais, explicitamente bíblicas, com uma sonoridade pop que conquistou os jovens de todo o Brasil.",
+      songs: [
+        { title: "Oração", url: "https://www.youtube.com/watch?v=V7hZnrYMvt0" },
+        {
+          title: "Grandioso Deus",
+          url: "https://www.youtube.com/watch?v=TI2l3S8Uup0",
+        },
+        { title: "Reinas", url: "https://www.youtube.com/watch?v=EDFX_KjlARo" },
+        {
+          title: "Teu Melhor",
+          url: "https://www.youtube.com/watch?v=RvrwcLLMBHc",
+        },
+      ],
+      stats: [
+        { value: "9M+", label: "streams nas plataformas" },
+        { value: "2", label: "álbuns lançados" },
+        { value: "200+", label: "agendas pelo Brasil" },
+      ],
+      instagram: "https://www.instagram.com/purplesbanda",
+      youtube: "https://www.youtube.com/purplesbanda",
+    },
+  },
+
   about: {
     title: "Quem somos",
     paragraphs: [
@@ -130,6 +192,7 @@ export const siteConfig = {
 export const navItems = [
   { label: "Início", href: "/" },
   { label: "50 Anos", href: "/50anos" },
+  { label: "Purples", href: "/purples" },
   { label: "LGPD", href: "/lgpd.pdf", external: true },
 ] as const;
 

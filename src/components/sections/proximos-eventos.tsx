@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -8,35 +9,64 @@ import { cn } from "@/lib/utils";
 /**
  * Carrossel automático de banners do cinquentenário (estilo Mercado Livre):
  * faixa larga 16:9 que avança sozinha, com setas, indicadores e arraste no
- * touch. Pausa ao passar o mouse / focar. Os banners do Purples e da Bíblia são
- * clicáveis (Sympla e loja); o do Watoto é apenas ilustrativo.
+ * touch. Pausa ao passar o mouse / focar. O banner do Purples abre a página
+ * interna /purples; o da Bíblia vai para a loja.
  */
 
 type Banner = {
   src: string;
   alt: string;
-  /** Destino externo ao clicar; ausente = banner não clicável. */
+  /** Destino ao clicar; ausente = banner não clicável. Links iniciados por
+   *  "/" são internos (next/link); os demais abrem em nova aba. */
   href?: string;
 };
 
 const banners: Banner[] = [
   {
     src: "/purples.jpg",
-    alt: "Purples em Franca — louvor e adoração, celebração do cinquentenário da IPFF. Ingressos na Sympla.",
-    href: "https://www.sympla.com.br/evento/banda-purples-50-anos-ipff/3377956",
+    alt: "Purples em Franca — louvor e adoração, celebração do cinquentenário da IPFF.",
+    href: "/purples",
   },
   {
     src: "/biblia.jpg",
     alt: "Bíblia Sagrada Jubileu de Ouro — edição comemorativa dos 50 anos da IPFF. Adquira na loja.",
     href: "https://ipff50anos.gttconsulting.com.br/",
   },
-  {
-    src: "/watoto.jpg",
-    alt: "Coral de Crianças Watoto em Franca-SP — apresentação especial do cinquentenário da IPFF.",
-  },
 ];
 
 const INTERVALO_MS = 5000;
+
+/** Envolve o banner no link correto: interno (next/link) ou externo (nova aba). */
+function LinkBanner({
+  href,
+  className,
+  tabIndex,
+  children,
+}: {
+  href: string;
+  className?: string;
+  tabIndex?: number;
+  children: React.ReactNode;
+}) {
+  if (href.startsWith("/")) {
+    return (
+      <Link href={href} className={className} tabIndex={tabIndex}>
+        {children}
+      </Link>
+    );
+  }
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={className}
+      tabIndex={tabIndex}
+    >
+      {children}
+    </a>
+  );
+}
 
 /** Arte de um banner (16:9). */
 function BannerImg({ banner, priority }: { banner: Banner; priority?: boolean }) {
@@ -126,15 +156,13 @@ export function ProximosEventos() {
             </div>
           );
           return banner.href ? (
-            <a
+            <LinkBanner
               key={banner.src}
               href={banner.href}
-              target="_blank"
-              rel="noopener noreferrer"
               className="block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               {conteudo}
-            </a>
+            </LinkBanner>
           ) : (
             <div key={banner.src}>{conteudo}</div>
           );
@@ -171,15 +199,13 @@ export function ProximosEventos() {
                   aria-hidden={i !== atual}
                 >
                   {banner.href ? (
-                    <a
+                    <LinkBanner
                       href={banner.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       tabIndex={i === atual ? 0 : -1}
                       className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     >
                       {conteudo}
-                    </a>
+                    </LinkBanner>
                   ) : (
                     conteudo
                   )}
