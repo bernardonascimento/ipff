@@ -18,6 +18,9 @@ export function SiteFooter() {
   const year = 2026;
   // Na página do evento Purples o footer acompanha o tema escuro "ameixa".
   const isPurples = usePathname() === "/purples";
+  // Safari só relê o theme-color em navegação completa: links que entram/saem
+  // da /purples usam <a> (recarga) para a cor da barra acompanhar.
+  const recarregar = (href: string) => isPurples || href === "/purples";
 
   const cls = {
     footer: isPurples
@@ -84,6 +87,13 @@ export function SiteFooter() {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className={cn("transition-colors", cls.link)}
+                  >
+                    {item.label}
+                  </a>
+                ) : recarregar(item.href) ? (
+                  <a
+                    href={item.href}
                     className={cn("transition-colors", cls.link)}
                   >
                     {item.label}

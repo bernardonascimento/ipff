@@ -17,13 +17,17 @@ import {
 } from "@/components/ui/sheet";
 import { siteConfig, navItems } from "@/config/site";
 
-function Wordmark({ className }: { className?: string }) {
-  return (
-    <Link
-      href="/"
-      className={cn("flex items-center gap-2 font-heading", className)}
-      aria-label={`${siteConfig.fullName} — início`}
-    >
+function Wordmark({
+  className,
+  hard,
+}: {
+  className?: string;
+  hard?: boolean;
+}) {
+  const cls = cn("flex items-center gap-2 font-heading", className);
+  const aria = `${siteConfig.fullName} — início`;
+  const inner = (
+    <>
       <Image
         src="/logo.png"
         alt=""
@@ -40,6 +44,18 @@ function Wordmark({ className }: { className?: string }) {
           Igreja Presbiteriana
         </span>
       </span>
+    </>
+  );
+  // Sair da /purples exige recarga total para o Safari reler o theme-color
+  // (por isso o <a> em vez de <Link> — desativamos a regra do Next aqui).
+  return hard ? (
+    // eslint-disable-next-line @next/next/no-html-link-for-pages
+    <a href="/" className={cls} aria-label={aria}>
+      {inner}
+    </a>
+  ) : (
+    <Link href="/" className={cls} aria-label={aria}>
+      {inner}
     </Link>
   );
 }
@@ -51,6 +67,10 @@ export function SiteHeader() {
   // A página do evento Purples usa header transparente (sobre o vídeo) e
   // esconde o botão "Assista aos cultos".
   const isPurples = pathname === "/purples";
+  // O Safari só relê o theme-color em navegação completa. Então links que
+  // entram na /purples (ou saem dela) usam <a> em vez de <Link> para forçar
+  // a recarga e a cor da barra do navegador acompanhar.
+  const recarregar = (href: string) => isPurples || href === "/purples";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -76,31 +96,39 @@ export function SiteHeader() {
       )}
     >
       <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Wordmark />
+        <Wordmark hard={isPurples} />
 
         {/* Navegação desktop */}
         <nav className="hidden items-center gap-1 md:flex">
-          {navItems.map((item) =>
-            "external" in item && item.external ? (
-              <a
-                key={item.href}
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="nav-underline px-3 py-2 text-base font-medium text-primary-foreground/80 transition-colors hover:text-primary-foreground"
-              >
-                {item.label}
-              </a>
-            ) : (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="nav-underline px-3 py-2 text-base font-medium text-primary-foreground/80 transition-colors hover:text-primary-foreground"
-              >
+          {navItems.map((item) => {
+            const cls =
+              "nav-underline px-3 py-2 text-base font-medium text-primary-foreground/80 transition-colors hover:text-primary-foreground";
+            if ("external" in item && item.external) {
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cls}
+                >
+                  {item.label}
+                </a>
+              );
+            }
+            if (recarregar(item.href)) {
+              return (
+                <a key={item.href} href={item.href} className={cls}>
+                  {item.label}
+                </a>
+              );
+            }
+            return (
+              <Link key={item.href} href={item.href} className={cls}>
                 {item.label}
               </Link>
-            ),
-          )}
+            );
+          })}
         </nav>
 
         {/* Menu mobile */}
@@ -122,27 +150,34 @@ export function SiteHeader() {
               </SheetTitle>
             </SheetHeader>
             <nav className="flex flex-col gap-1 px-4">
-              {navItems.map((item) => (
-                <SheetClose asChild key={item.href}>
-                  {"external" in item && item.external ? (
+              {navItems.map((item) => {
+                const cls =
+                  "rounded-md px-3 py-2.5 text-base font-medium hover:bg-secondary";
+                const el =
+                  "external" in item && item.external ? (
                     <a
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="rounded-md px-3 py-2.5 text-base font-medium hover:bg-secondary"
+                      className={cls}
                     >
                       {item.label}
                     </a>
+                  ) : recarregar(item.href) ? (
+                    <a href={item.href} className={cls}>
+                      {item.label}
+                    </a>
                   ) : (
-                    <Link
-                      href={item.href}
-                      className="rounded-md px-3 py-2.5 text-base font-medium hover:bg-secondary"
-                    >
+                    <Link href={item.href} className={cls}>
                       {item.label}
                     </Link>
-                  )}
-                </SheetClose>
-              ))}
+                  );
+                return (
+                  <SheetClose asChild key={item.href}>
+                    {el}
+                  </SheetClose>
+                );
+              })}
             </nav>
           </SheetContent>
         </Sheet>
