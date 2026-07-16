@@ -10,7 +10,6 @@ type DadosEmail = {
   date: string;
   time: string;
   venue: string;
-  city: string;
 };
 
 export function emailConfirmacao({
@@ -19,11 +18,15 @@ export function emailConfirmacao({
   date,
   time,
   venue,
-  city,
 }: DadosEmail): { subject: string; html: string; text: string } {
   const primeiroNome = nome.trim().split(" ")[0] || nome;
   const ingressoLabel = quantidade === 1 ? "ingresso" : "ingressos";
+  const chipLabel =
+    quantidade === 1 ? "ingresso garantido" : "ingressos garantidos";
   const subject = "Inscrição confirmada — Purples em Franca 🎸";
+
+  // Ícone de ticket em emoji — garante renderização em todos os clientes de e-mail.
+  const ticketIcon = "🎟";
 
   const html = `<!doctype html>
 <html lang="pt-BR">
@@ -35,16 +38,36 @@ export function emailConfirmacao({
           <td style="padding:32px;">
             <p style="margin:0 0 6px;color:#fb7185;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:bold;">Inscrição confirmada</p>
             <h1 style="margin:0 0 16px;color:#ffffff;font-size:26px;line-height:1.15;">Purples em Franca 🎸</h1>
-            <p style="margin:0 0 24px;color:#b3a9c6;font-size:16px;line-height:1.6;">
-              Olá, ${primeiroNome}! Seu lugar está garantido. Reservamos
-              <strong style="color:#ffffff;">${quantidade} ${ingressoLabel}</strong>
-              para você.
+            <p style="margin:0 0 6px;color:#b3a9c6;font-size:16px;line-height:1.6;">
+              Olá, ${primeiroNome}! Seu lugar está garantido.
             </p>
+            <p style="margin:0 0 20px;color:#b3a9c6;font-size:16px;line-height:1.6;">
+              Reservamos ${ticketIcon} <strong style="color:#ffffff;">${quantidade} ${ingressoLabel}</strong> para você.
+            </p>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;">
+              <tr>
+                <td align="center">
+                  <table role="presentation" cellpadding="0" cellspacing="0" style="background:#d946ef;background:linear-gradient(100deg,#7c3aed,#d946ef,#fb7185);border-radius:9999px;">
+                    <tr>
+                      <td style="padding:2px;">
+                        <table role="presentation" cellpadding="0" cellspacing="0" style="background:#0c0a12;border-radius:9999px;">
+                          <tr>
+                            <td style="padding:11px 22px;color:#ffffff;font-size:17px;font-weight:bold;white-space:nowrap;">
+                              ${ticketIcon}&nbsp;&nbsp;${quantidade} ${chipLabel}
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#201a2c;border-radius:12px;">
               <tr>
                 <td style="padding:18px 20px;color:#ffffff;font-size:15px;line-height:1.9;">
                   📅 <strong>${date} às ${time}</strong><br />
-                  📍 ${venue} — ${city}<br />
+                  📍 ${venue}<br />
                   🎟 Entrada gratuita
                 </td>
               </tr>
@@ -63,10 +86,11 @@ export function emailConfirmacao({
   const text = [
     `Inscrição confirmada — Purples em Franca`,
     ``,
-    `Olá, ${primeiroNome}! Seu lugar está garantido. Reservamos ${quantidade} ${ingressoLabel} para você.`,
+    `Olá, ${primeiroNome}! Seu lugar está garantido.`,
+    `🎟 Reservamos ${quantidade} ${ingressoLabel} para você.`,
     ``,
     `Data: ${date} às ${time}`,
-    `Local: ${venue} — ${city}`,
+    `Local: ${venue}`,
     `Entrada gratuita`,
     ``,
     `Nos vemos lá!`,

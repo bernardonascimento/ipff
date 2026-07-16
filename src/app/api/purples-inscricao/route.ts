@@ -34,7 +34,6 @@ async function enviarEmailConfirmacao(dados: {
       date: event.date,
       time: event.time,
       venue: event.venue,
-      city: event.city,
     });
     const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
