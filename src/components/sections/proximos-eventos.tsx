@@ -49,6 +49,15 @@ function LinkBanner({
   children: React.ReactNode;
 }) {
   if (href.startsWith("/")) {
+    // /purples usa navegação completa (não SPA) para o Safari reler o
+    // theme-color escuro da barra ao entrar na página do evento.
+    if (href === "/purples") {
+      return (
+        <a href={href} className={className} tabIndex={tabIndex}>
+          {children}
+        </a>
+      );
+    }
     return (
       <Link href={href} className={className} tabIndex={tabIndex}>
         {children}
