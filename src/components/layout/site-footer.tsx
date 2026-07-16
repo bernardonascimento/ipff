@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { YoutubeIcon, InstagramIcon, FacebookIcon } from "@/components/icons";
 import { siteConfig, navItems } from "@/config/site";
 
@@ -12,9 +16,28 @@ const socialLinks = [
 export function SiteFooter() {
   const { contact } = siteConfig;
   const year = 2026;
+  // Na página do evento Purples o footer acompanha o tema escuro "ameixa".
+  const isPurples = usePathname() === "/purples";
+
+  const cls = {
+    footer: isPurples
+      ? "border-white/10 bg-[#0c0a12] text-primary-foreground"
+      : "border-border bg-secondary/40",
+    heading: isPurples ? "text-white/50" : "text-muted-foreground",
+    tagline: isPurples ? "text-white/60" : "text-muted-foreground",
+    body: isPurples ? "text-white/75" : "text-foreground/80",
+    link: isPurples
+      ? "text-white/75 hover:text-white"
+      : "text-foreground/80 hover:text-primary",
+    icon: isPurples ? "text-[#d946ef]" : "text-primary",
+    social: isPurples
+      ? "border-white/15 bg-white/5 text-white/70 hover:bg-white/15 hover:text-white"
+      : "border-border bg-background text-muted-foreground hover:bg-primary hover:text-primary-foreground",
+    bottom: isPurples ? "text-white/45" : "text-muted-foreground",
+  };
 
   return (
-    <footer className="border-t bg-secondary/40">
+    <footer className={cn("border-t", cls.footer)}>
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-3">
         <div>
           <p className="font-heading text-lg font-semibold">
@@ -22,7 +45,7 @@ export function SiteFooter() {
             <br />
             Filadélfia de Franca
           </p>
-          <p className="mt-2 max-w-xs text-sm text-muted-foreground">
+          <p className={cn("mt-2 max-w-xs text-sm", cls.tagline)}>
             {siteConfig.tagline}
           </p>
           <div className="mt-4 flex gap-2">
@@ -33,7 +56,10 @@ export function SiteFooter() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="flex size-9 items-center justify-center rounded-full border bg-background text-muted-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
+                className={cn(
+                  "flex size-9 items-center justify-center rounded-full border transition-colors",
+                  cls.social,
+                )}
               >
                 <Icon className="size-4" />
               </a>
@@ -42,7 +68,12 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+          <p
+            className={cn(
+              "text-sm font-semibold uppercase tracking-wider",
+              cls.heading,
+            )}
+          >
             Navegação
           </p>
           <ul className="mt-3 space-y-2 text-sm">
@@ -53,14 +84,14 @@ export function SiteFooter() {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-foreground/80 transition-colors hover:text-primary"
+                    className={cn("transition-colors", cls.link)}
                   >
                     {item.label}
                   </a>
                 ) : (
                   <Link
                     href={item.href}
-                    className="text-foreground/80 transition-colors hover:text-primary"
+                    className={cn("transition-colors", cls.link)}
                   >
                     {item.label}
                   </Link>
@@ -71,12 +102,17 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+          <p
+            className={cn(
+              "text-sm font-semibold uppercase tracking-wider",
+              cls.heading,
+            )}
+          >
             Contato
           </p>
-          <ul className="mt-3 space-y-2.5 text-sm text-foreground/80">
+          <ul className={cn("mt-3 space-y-2.5 text-sm", cls.body)}>
             <li className="flex items-start gap-2">
-              <MapPin className="mt-0.5 size-4 shrink-0 text-primary" />
+              <MapPin className={cn("mt-0.5 size-4 shrink-0", cls.icon)} />
               <span>
                 {contact.address.street}
                 <br />
@@ -85,14 +121,20 @@ export function SiteFooter() {
               </span>
             </li>
             <li className="flex items-center gap-2">
-              <Phone className="size-4 shrink-0 text-primary" />
-              <a href={`tel:${contact.phone}`} className="hover:text-primary">
+              <Phone className={cn("size-4 shrink-0", cls.icon)} />
+              <a
+                href={`tel:${contact.phone}`}
+                className={isPurples ? "hover:text-white" : "hover:text-primary"}
+              >
                 {contact.phone}
               </a>
             </li>
             <li className="flex items-center gap-2">
-              <Mail className="size-4 shrink-0 text-primary" />
-              <a href={`mailto:${contact.email}`} className="hover:text-primary">
+              <Mail className={cn("size-4 shrink-0", cls.icon)} />
+              <a
+                href={`mailto:${contact.email}`}
+                className={isPurples ? "hover:text-white" : "hover:text-primary"}
+              >
                 {contact.email}
               </a>
             </li>
@@ -100,8 +142,13 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="border-t">
-        <div className="mx-auto max-w-6xl px-4 py-5 text-center text-xs text-muted-foreground sm:px-6">
+      <div className={cn("border-t", isPurples && "border-white/10")}>
+        <div
+          className={cn(
+            "mx-auto max-w-6xl px-4 py-5 text-center text-xs sm:px-6",
+            cls.bottom,
+          )}
+        >
           © {year} {siteConfig.fullName}. Todos os direitos reservados.
         </div>
       </div>

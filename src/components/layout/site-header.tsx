@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, Play } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -46,6 +47,10 @@ function Wordmark({ className }: { className?: string }) {
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  // A página do evento Purples usa header transparente (sobre o vídeo) e
+  // esconde o botão "Assista aos cultos".
+  const isPurples = pathname === "/purples";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -57,10 +62,17 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full border-b bg-primary text-primary-foreground transition-shadow",
-        scrolled
-          ? "border-primary-foreground/10 shadow-lg shadow-primary/30"
-          : "border-primary-foreground/5",
+        "sticky top-0 z-50 w-full text-primary-foreground transition-all",
+        isPurples
+          ? scrolled
+            ? "border-b border-white/10 bg-[rgba(12,10,18,0.85)] backdrop-blur-md"
+            : "border-b border-transparent bg-transparent"
+          : cn(
+              "border-b bg-primary transition-shadow",
+              scrolled
+                ? "border-primary-foreground/10 shadow-lg shadow-primary/30"
+                : "border-primary-foreground/5",
+            ),
       )}
     >
       <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-4 sm:px-6">
@@ -89,20 +101,6 @@ export function SiteHeader() {
               </Link>
             ),
           )}
-          <Button
-            asChild
-            variant="secondary"
-            className="group ml-3 h-11 px-5 text-base"
-          >
-            <a
-              href={siteConfig.social.youtube}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Play className="size-[1.1rem] transition-transform group-hover:scale-110" />
-              Assista aos cultos
-            </a>
-          </Button>
         </nav>
 
         {/* Menu mobile */}
@@ -145,15 +143,6 @@ export function SiteHeader() {
                   )}
                 </SheetClose>
               ))}
-              <Button asChild className="mt-3">
-                <a
-                  href={siteConfig.social.youtube}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Assista aos cultos
-                </a>
-              </Button>
             </nav>
           </SheetContent>
         </Sheet>

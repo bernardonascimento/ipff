@@ -229,9 +229,87 @@
   animation: attention-pulse 1.8s ease-in-out infinite;
 }
 
+/* ── Página do evento Purples (pop-rock gospel) ───────────────
+   Tema escuro "ameixa" escopado a .purples-theme — não afeta o
+   resto do site (que segue a paleta verde da IPFF). */
+.purples-theme {
+  --pp-bg: #0c0a12;
+  --pp-surface: #17121f;
+  --pp-surface-2: #201a2c;
+  --pp-border: #2c2440;
+  --pp-fg: #f5f3f7;
+  --pp-muted: #b3a9c6;
+  --pp-violet: #7c3aed;
+  --pp-magenta: #d946ef;
+  --pp-coral: #fb7185;
+}
+
+/* Tipografia display do evento (Sora) — sobrepõe o Merriweather global */
+.font-display {
+  font-family: var(--font-sora), var(--font-sans), sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Texto com gradiente da marca do evento (violeta → magenta → coral) */
+.text-gradient-purples {
+  background-image: linear-gradient(
+    100deg,
+    var(--pp-violet),
+    var(--pp-magenta) 52%,
+    var(--pp-coral)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Chip "Evento gratuito" — borda em gradiente girando ao redor */
+@property --pp-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes pp-rotate {
+  to {
+    --pp-angle: 360deg;
+  }
+}
+.pp-chip-ring {
+  /* Anel-base fraco sempre visível + segmento brilhante que corre ao redor */
+  background-color: rgba(255, 255, 255, 0.14);
+  background-image: conic-gradient(
+    from var(--pp-angle),
+    transparent 0deg,
+    transparent 275deg,
+    var(--pp-violet) 315deg,
+    var(--pp-magenta) 340deg,
+    var(--pp-coral) 353deg,
+    transparent 360deg
+  );
+  animation: pp-rotate 3.2s linear infinite;
+}
+
+/* Halo pulsante do gradiente sob o botão principal de inscrição */
+@keyframes pp-glow {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.04);
+  }
+}
+.animate-pp-glow {
+  animation: pp-glow 3.2s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-rise,
-  .animate-attention {
+  .animate-attention,
+  .animate-pp-glow,
+  .pp-chip-ring {
     animation: none;
   }
   html {
