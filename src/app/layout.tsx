@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Source_Sans_3, Merriweather } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
@@ -23,6 +23,12 @@ const merriweather = Merriweather({
 });
 
 const titleDefault = `${siteConfig.fullName} | IPB em Franca/SP`;
+
+// Cor da barra do navegador (verde da igreja) — a página /purples sobrescreve
+// com o tom escuro do evento no seu próprio `viewport`.
+export const viewport: Viewport = {
+  themeColor: "#0e3400",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
