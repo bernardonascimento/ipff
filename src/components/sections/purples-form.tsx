@@ -220,7 +220,7 @@ export function PurplesForm() {
           aria-disabled={!formValido || estado === "enviando"}
           className={`font-display group inline-flex h-13 w-full items-center justify-center gap-2 rounded-xl bg-[linear-gradient(100deg,var(--pp-violet),var(--pp-magenta)_55%,var(--pp-coral))] text-base font-bold text-white shadow-lg shadow-[color:var(--pp-magenta)]/30 transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--pp-surface)] ${
             formValido && estado !== "enviando"
-              ? "hover:-translate-y-0.5"
+              ? "cursor-pointer hover:-translate-y-0.5"
               : "cursor-not-allowed opacity-60"
           }`}
         >
