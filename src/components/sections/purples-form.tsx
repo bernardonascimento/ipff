@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { Loader2, Check, Ticket } from "lucide-react";
+import { Loader2, Check, Ticket, ChevronDown } from "lucide-react";
 
 /**
  * Formulário de inscrição gratuita do evento. Envia os dados para
@@ -177,18 +177,24 @@ export function PurplesForm() {
             <label htmlFor="pp-quantidade" className={labelBase}>
               Ingressos
             </label>
-            <select
-              id="pp-quantidade"
-              value={quantidade}
-              onChange={(e) => setQuantidade(Number(e.target.value))}
-              className={inputBase}
-            >
-              {QUANTIDADES.map((n) => (
-                <option key={n} value={n} className="bg-[var(--pp-surface-2)]">
-                  {n} {n === 1 ? "ingresso" : "ingressos"}
-                </option>
-              ))}
-            </select>
+            <div className="relative">
+              <select
+                id="pp-quantidade"
+                value={quantidade}
+                onChange={(e) => setQuantidade(Number(e.target.value))}
+                className={`${inputBase} cursor-pointer appearance-none pr-10`}
+              >
+                {QUANTIDADES.map((n) => (
+                  <option key={n} value={n} className="bg-[var(--pp-surface-2)]">
+                    {n} {n === 1 ? "ingresso" : "ingressos"}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown
+                aria-hidden
+                className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-white/50"
+              />
+            </div>
           </div>
         </div>
       </div>
