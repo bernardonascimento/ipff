@@ -244,6 +244,13 @@
   --pp-coral: #fb7185;
 }
 
+/* Na página do evento, o fundo geral do body acompanha o tema escuro — evita
+   a faixa clara ("linha branca") no topo, sob o header transparente. Escopado
+   via :has, então as outras páginas seguem com o fundo claro normal. */
+body:has(.purples-theme) {
+  background-color: #0c0a12;
+}
+
 /* Tipografia display do evento (Sora) — sobrepõe o Merriweather global */
 .font-display {
   font-family: var(--font-sora), var(--font-sans), sans-serif;
