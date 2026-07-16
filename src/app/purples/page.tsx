@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Sora } from "next/font/google";
 import { PurplesHero } from "@/components/sections/purples-hero";
 import { PurplesBanner } from "@/components/sections/purples-banner";
@@ -13,6 +13,11 @@ const sora = Sora({
   variable: "--font-sora",
   display: "swap",
 });
+
+// Barra do navegador no tom escuro do evento (sobrescreve o verde global)
+export const viewport: Viewport = {
+  themeColor: "#0c0a12",
+};
 
 export const metadata: Metadata = {
   title: siteConfig.purples.title,
