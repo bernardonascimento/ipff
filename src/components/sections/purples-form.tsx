@@ -11,7 +11,13 @@ import { Loader2, Check, Ticket, ChevronDown } from "lucide-react";
 
 /** Aplica a máscara (99) 99999-9999 sobre os dígitos digitados. */
 function mascaraCelular(valor: string): string {
-  const d = valor.replace(/\D/g, "").slice(0, 11);
+  let digitos = valor.replace(/\D/g, "");
+  // Autopreenchimento do navegador costuma trazer o DDI +55; remove-o quando
+  // há dígitos além dos 11 do número nacional (não afeta o DDD 55, que tem ≤11).
+  if (digitos.length > 11 && digitos.startsWith("55")) {
+    digitos = digitos.slice(2);
+  }
+  const d = digitos.slice(0, 11);
   if (d.length === 0) return "";
   if (d.length <= 2) return `(${d}`;
   if (d.length <= 6) return `(${d.slice(0, 2)}) ${d.slice(2)}`;
