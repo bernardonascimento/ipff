@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Source_Sans_3, Merriweather } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -174,13 +174,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // ID de medição do Google Analytics 4 (configurado na Vercel / .env.local).
+  // IDs de medição (configurados na Vercel / .env.local — nunca hardcoded).
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
   return (
     <html
       lang="pt-BR"
       className={`${sourceSans.variable} ${merriweather.variable} h-full antialiased`}
     >
+      {/* Google Tag Manager — injeta o container após a hidratação.
+          ID definido em NEXT_PUBLIC_GTM_ID (Vercel/.env.local). */}
+      {gtmId ? <GoogleTagManager gtmId={gtmId} /> : null}
       <body className="flex min-h-full flex-col">
         <script
           type="application/ld+json"
