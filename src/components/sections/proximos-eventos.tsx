@@ -24,13 +24,8 @@ type Banner = {
 const banners: Banner[] = [
   {
     src: "/purples.jpg",
-    alt: "Purples em Franca — louvor e adoração, celebração do cinquentenário da IPFF.",
+    alt: "Purples ao vivo em Franca — 50 anos de fidelidade e amor a Deus. Evento gratuito em 08/08 às 20h no Instituto Samaritano de Ensino.",
     href: "/purples",
-  },
-  {
-    src: "/biblia.jpg",
-    alt: "Bíblia Sagrada Jubileu de Ouro — edição comemorativa dos 50 anos da IPFF. Adquira na loja.",
-    href: "https://ipff50anos.gttconsulting.com.br/",
   },
 ];
 
@@ -77,14 +72,14 @@ function LinkBanner({
   );
 }
 
-/** Arte de um banner (16:9). */
+/** Arte de um banner (proporção 3:2 do pôster do evento). */
 function BannerImg({ banner, priority }: { banner: Banner; priority?: boolean }) {
   return (
     <Image
       src={banner.src}
       alt={banner.alt}
-      width={1600}
-      height={900}
+      width={1536}
+      height={1024}
       sizes="(min-width: 1024px) 1024px, 100vw"
       priority={priority}
       className="block h-auto w-full"
@@ -107,9 +102,12 @@ export function ProximosEventos() {
     [total],
   );
 
+  // Só faz sentido rodar o carrossel (auto-play, setas, indicadores) com 2+ banners.
+  const temCarrossel = total > 1;
+
   // Avanço automático — respeita prefers-reduced-motion e a pausa por hover/foco.
   useEffect(() => {
-    if (pausado) return;
+    if (pausado || !temCarrossel) return;
     if (
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -118,7 +116,7 @@ export function ProximosEventos() {
     }
     const id = window.setInterval(proximo, INTERVALO_MS);
     return () => window.clearInterval(id);
-  }, [pausado, proximo, atual]);
+  }, [pausado, temCarrossel, proximo, atual]);
 
   // Arraste/swipe no touch.
   const toqueX = useRef<number | null>(null);
@@ -223,42 +221,47 @@ export function ProximosEventos() {
             })}
           </div>
 
-          {/* Seta anterior */}
-          <button
-            type="button"
-            onClick={anterior}
-            aria-label="Banner anterior"
-            className="absolute left-3 top-1/2 hidden -translate-y-1/2 rounded-full bg-card/80 p-2 text-primary shadow-md backdrop-blur transition hover:bg-card focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:block sm:opacity-0 sm:group-hover:opacity-100"
-          >
-            <ChevronLeft className="size-5" />
-          </button>
-
-          {/* Seta próximo */}
-          <button
-            type="button"
-            onClick={proximo}
-            aria-label="Próximo banner"
-            className="absolute right-3 top-1/2 hidden -translate-y-1/2 rounded-full bg-card/80 p-2 text-primary shadow-md backdrop-blur transition hover:bg-card focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:block sm:opacity-0 sm:group-hover:opacity-100"
-          >
-            <ChevronRight className="size-5" />
-          </button>
-
-          {/* Indicadores */}
-          <div className="absolute inset-x-0 bottom-3 flex items-center justify-center gap-2">
-            {banners.map((banner, i) => (
+          {/* Setas e indicadores — apenas quando há mais de um banner */}
+          {temCarrossel && (
+            <>
+              {/* Seta anterior */}
               <button
-                key={banner.src}
                 type="button"
-                onClick={() => irPara(i)}
-                aria-label={`Ir para o banner ${i + 1}`}
-                aria-current={i === atual}
-                className={cn(
-                  "h-2 rounded-full bg-white/60 shadow ring-1 ring-black/10 transition-all hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                  i === atual ? "w-6 bg-white" : "w-2",
-                )}
-              />
-            ))}
-          </div>
+                onClick={anterior}
+                aria-label="Banner anterior"
+                className="absolute left-3 top-1/2 hidden -translate-y-1/2 rounded-full bg-card/80 p-2 text-primary shadow-md backdrop-blur transition hover:bg-card focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:block sm:opacity-0 sm:group-hover:opacity-100"
+              >
+                <ChevronLeft className="size-5" />
+              </button>
+
+              {/* Seta próximo */}
+              <button
+                type="button"
+                onClick={proximo}
+                aria-label="Próximo banner"
+                className="absolute right-3 top-1/2 hidden -translate-y-1/2 rounded-full bg-card/80 p-2 text-primary shadow-md backdrop-blur transition hover:bg-card focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:block sm:opacity-0 sm:group-hover:opacity-100"
+              >
+                <ChevronRight className="size-5" />
+              </button>
+
+              {/* Indicadores */}
+              <div className="absolute inset-x-0 bottom-3 flex items-center justify-center gap-2">
+                {banners.map((banner, i) => (
+                  <button
+                    key={banner.src}
+                    type="button"
+                    onClick={() => irPara(i)}
+                    aria-label={`Ir para o banner ${i + 1}`}
+                    aria-current={i === atual}
+                    className={cn(
+                      "h-2 rounded-full bg-white/60 shadow ring-1 ring-black/10 transition-all hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                      i === atual ? "w-6 bg-white" : "w-2",
+                    )}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </section>
